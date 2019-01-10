@@ -1,0 +1,6 @@
+[user]
+	name = bloertscher
+	email = loertscher.b@outlook.com
+
+[include]
+    path = ~/.gitconfig_local
