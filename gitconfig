@@ -2,5 +2,9 @@
 	name = bloertscher
 	email = loertscher.b@outlook.com
 
+[alias]
+    st = status -sb
+
+
 [include]
     path = ~/.gitconfig_local
