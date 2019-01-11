@@ -1,4 +1,4 @@
-# User customizable options
+# # User customizable options
 # PR_ARROW_CHAR="[some character]"
 # RPR_SHOW_USER=(true, false) - show username in rhs prompt
 # RPR_SHOW_HOST=(true, false) - show host in rhs prompt
@@ -108,15 +108,17 @@ RPR_SHOW_HOST=true # Set to false to disable host in rhs prompt
 function RPR_HOST() {
     local colors
     colors=(cyan green yellow red pink)
-    local index=$(python <<EOF
-import hashlib
+#This crashes on CADE
+#     local index=$(python <<EOF
+# import hashlib
 
-hash = int(hashlib.sha1('$(machine_name)'.encode('utf8')).hexdigest(), 16)
-index = hash % ${#colors} + 1
+# hash = int(hashlib.sha1('$(machine_name)'.encode('utf8')).hexdigest(), 16)
+# index = hash % ${#colors} + 1
 
-print(index)
-EOF
-    )
+# print(index)
+# EOF
+#     )
+    local index=2
     local color=$colors[index]
     if [[ "${RPR_SHOW_HOST}" == "true" ]]; then
         echo "%{$fg[$color]%}$(machine_name)%{$reset_color%}"
@@ -150,12 +152,17 @@ GIT_PROMPT_DETACHED="%{$fg[neon]%}%B!%b%{$reset_color%}"
 
 # Show Git branch/tag, or name-rev if on detached head
 function parse_git_branch() {
-    (git symbolic-ref -q HEAD || git name-rev --name-only --no-undefined --always HEAD) 2> /dev/null
+    if [ $(git symbolic-ref -q HEAD 2>/dev/null) ]; then
+        git name-rev --name-only --no-undefined --always HEAD 2>/dev/null
+    fi
 }
 
 function parse_git_detached() {
-    if ! git symbolic-ref HEAD >/dev/null 2>&1; then
-        echo "${GIT_PROMPT_DETACHED}"
+    if [ ! $(git symbolic-ref HEAD 2>/dev/null) ]; then
+        # echo "${GIT_PROMPT_DETACHED}"
+        echo "DETACHED"
+    else 
+         echo "NOT DETACHED"
     fi
 }
 
@@ -164,12 +171,12 @@ function parse_git_state() {
     # Compose this value via multiple conditional appends.
     local GIT_STATE=""
 
-    local NUM_AHEAD="$(git log --oneline @{u}.. 2> /dev/null | wc -l | tr -d ' ')"
+    local NUM_AHEAD="$(git log --oneline @{u}.. 2>/dev/null | wc -l | tr -d ' ')"
     if [ "$NUM_AHEAD" -gt 0 ]; then
     GIT_STATE=$GIT_STATE${GIT_PROMPT_AHEAD//NUM/$NUM_AHEAD}
     fi
 
-    local NUM_BEHIND="$(git log --oneline ..@{u} 2> /dev/null | wc -l | tr -d ' ')"
+    local NUM_BEHIND="$(git log --oneline ..@{u} 2>/dev/null | wc -l | tr -d ' ')"
     if [ "$NUM_BEHIND" -gt 0 ]; then
         if [[ -n $GIT_STATE ]]; then
             GIT_STATE="$GIT_STATE "
@@ -177,7 +184,7 @@ function parse_git_state() {
     GIT_STATE=$GIT_STATE${GIT_PROMPT_BEHIND//NUM/$NUM_BEHIND}
     fi
 
-    local GIT_DIR="$(git rev-parse --git-dir 2> /dev/null)"
+    local GIT_DIR="$(git rev-parse --git-dir 2>/dev/null)"
     if [ -n $GIT_DIR ] && test -r $GIT_DIR/MERGE_HEAD; then
         if [[ -n $GIT_STATE ]]; then
             GIT_STATE="$GIT_STATE "
@@ -185,15 +192,15 @@ function parse_git_state() {
     GIT_STATE=$GIT_STATE$GIT_PROMPT_MERGING
     fi
 
-    if [[ -n $(git ls-files --other --exclude-standard :/ 2> /dev/null) ]]; then
+    if [[ -n $(git ls-files --other --exclude-standard :/ 2>/dev/null) ]]; then
     GIT_DIFF=$GIT_PROMPT_UNTRACKED
     fi
 
-    if ! git diff --quiet 2> /dev/null; then
+    if ! git diff --quiet 2>/dev/null; then
     GIT_DIFF=$GIT_DIFF$GIT_PROMPT_MODIFIED
     fi
 
-    if ! git diff --cached --quiet 2> /dev/null; then
+    if ! git diff --cached --quiet 2>/dev/null; then
     GIT_DIFF=$GIT_DIFF$GIT_PROMPT_STAGED
     fi
 
@@ -213,7 +220,13 @@ function git_prompt_string() {
     if [[ "${RPR_SHOW_GIT}" == "true" ]]; then
         local git_where="$(parse_git_branch)"
         local git_detached="$(parse_git_detached)"
-        [ -n "$git_where" ] && echo " $GIT_PROMPT_SYMBOL$(parse_git_state)$GIT_PROMPT_PREFIX%{$fg[magenta]%}%B${git_where#(refs/heads/|tags/)}%b$git_detached$GIT_PROMPT_SUFFIX"
+        # local git_state=$(parse_git_state)
+
+        # local git_where="git_where"
+        # local git_detached="git_detached"
+        local git_state="GITSTATE"
+
+        [ -n "$git_where" ] && echo " $GIT_PROMPT_SYMBOL$git_state$GIT_PROMPT_PREFIX%{$fg[magenta]%}%B${git_where#(refs/heads/|tags/)}%b$git_detached$GIT_PROMPT_SUFFIX"
     fi
 }
 
@@ -250,7 +263,11 @@ function RPR_EXTRA() {
 # Right-hand prompt
 function RCMD() {
     if (( PROMPT_MODE == 0 )); then
-        echo "$(RPR_INFO)$(git_prompt_string)$(RPR_EXTRA)"
+        #echo "$(RPR_INFO)$(git_prompt_string)$(RPR_EXTRA)"
+        # both of these cause a crash when zsh-syntax-highlighting is included
+        # echo "$(RPR_INFO)"
+        echo "$(git_prompt_string)"
+        echo "$(RPR_EXTRA)"
     elif (( PROMPT_MODE <= 2 )); then
         echo "$(git_prompt_string)$(RPR_EXTRA)"
     else
