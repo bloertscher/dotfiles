@@ -29,24 +29,29 @@ setopt extendedhistory
 KEYTIMEOUT=1 # corresponds to 10ms
 
 # Use vim as the editor
-export EDITOR=vim
+export EDITOR=emacs
 
 # Use vim style line editing in zsh
-bindkey -v
+#bindkey -v
 # Movement
-bindkey -a 'gg' beginning-of-buffer-or-history
-bindkey -a 'G' end-of-buffer-or-history
+#bindkey -a 'gg' beginning-of-buffer-or-history
+#bindkey -a 'G' end-of-buffer-or-history
 # Undo
-bindkey -a 'u' undo
-bindkey -a '^R' redo
+#bindkey -a 'u' undo
+#bindkey -a '^R' redo
 # Edit line
-bindkey -a '^V' edit-command-line
+#bindkey -a '^V' edit-command-line
 # Backspace
-bindkey '^?' backward-delete-char
-bindkey '^H' backward-delete-char
+#bindkey '^?' backward-delete-char
+#bindkey '^H' backward-delete-char
 
 # Use incremental search
 bindkey "^R" history-incremental-search-backward
 
 # Disable shell builtins
 disable r
+
+# Don't change priority of background processes with nice.
+# https://github.com/Microsoft/WSL/issues/1887
+# Will be fixed in Windows build 17738
+unsetopt BG_NICE
