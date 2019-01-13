@@ -23,17 +23,17 @@ dfu() {
 }
 
 # Use pip without requiring virtualenv
-syspip() {
-    PIP_REQUIRE_VIRTUALENV="" pip "$@"
-}
+# syspip() {
+#     PIP_REQUIRE_VIRTUALENV="" pip "$@"
+# }
 
-syspip2() {
-    PIP_REQUIRE_VIRTUALENV="" pip2 "$@"
-}
+# syspip2() {
+#     PIP_REQUIRE_VIRTUALENV="" pip2 "$@"
+# }
 
-syspip3() {
-    PIP_REQUIRE_VIRTUALENV="" pip3 "$@"
-}
+# syspip3() {
+#     PIP_REQUIRE_VIRTUALENV="" pip3 "$@"
+# }
 
 # cd to git root directory
 alias cdgr='cd "$(git root)"'
@@ -131,3 +131,6 @@ serve() {
 
 # Mirror stdout to stderr, useful for seeing data going through a pipe
 alias peek='tee >(cat 1>&2)'
+
+alias python='python3'
+alias pip='pip3'
