@@ -250,9 +250,13 @@ function RPR_EXTRA() {
 # Right-hand prompt
 function RCMD() {
     if (( PROMPT_MODE == 0 )); then
-        echo "$(RPR_INFO)$(git_prompt_string)$(RPR_EXTRA)"
+        #echo "$(RPR_INFO)$(git_prompt_string)$(RPR_EXTRA)"
+        # both of these cause a crash when zsh-syntax-highlighting is included
+        # echo "$(RPR_INFO)"
+        # echo "$(git_prompt_string)"
+        echo "$(RPR_EXTRA)"
     elif (( PROMPT_MODE <= 2 )); then
-        echo "$(git_prompt_string)$(RPR_EXTRA)"
+        # echo "$(git_prompt_string)$(RPR_EXTRA)"
     else
         echo "$(RPR_EXTRA)"
     fi
