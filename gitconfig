@@ -25,6 +25,9 @@
 [push]
 	default = current
 
+[credential]
+	helper = cache --timeout=3600
+
 # This goes last
 [include]
 	path = ~/.gitconfig_local
