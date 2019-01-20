@@ -1,0 +1,5 @@
+# force 256 colors for terminator
+if [[ "$TERM" == "xterm" ]]; then
+    export TERM='xterm-256color'
+fi
+
