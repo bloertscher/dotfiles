@@ -10,9 +10,10 @@
     ~/.shell:
     ~/.zsh:
     ~/.zshrc:
+    ~/.bash:
+    ~/.bashrc:
     ~/.gitconfig:
     ~/.gitignore_global:
-    ~/.bashrc:
     ~/.tmux.conf:
 
 - shell:
