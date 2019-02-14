@@ -6,7 +6,6 @@
 - clean: ['~']
 
 - link:
-    ~/.dotfiles: ''
     ~/.shell:
     ~/.zsh:
     ~/.zshrc:
@@ -19,3 +18,4 @@
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
+  - [~/.dotfiles/bin/install-git-extras.sh, Installing git-extras]
