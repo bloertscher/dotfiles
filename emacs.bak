@@ -1,0 +1,31 @@
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(c-basic-offset 2)
+ '(c-offsets-alist
+   (quote
+    ((substatement-open . 0)
+     (substatement-label . +)
+     (access-label . 0)
+     (label . 0))))
+ '(c-tab-always-indent (quote other))
+ '(custom-enabled-themes (quote (tango-dark)))
+ '(font-use-system-font t)
+ '(indent-tabs-mode nil)
+ '(inhibit-startup-screen t)
+ '(setq standard-indent t)
+ '(tab-always-indent t)
+ '(tab-width 4))
+;; Set cursor color to white
+  (set-cursor-color "#f0fff0") 
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Inconsolata" :foundry "unknown" :slant normal :weight normal :height 116 :width normal))))
+ '(cursor ((t (:background "light steel blue"))))
+ '(region ((t (:background "SteelBlue4")))))
+
