@@ -29,6 +29,9 @@
 [credential]
 	helper = cache --timeout=3600
 
+[core]
+	editor = emacs -nw
+
 # This goes last
 [include]
 	path = ~/.gitconfig_local

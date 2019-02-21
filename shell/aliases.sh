@@ -16,7 +16,7 @@ alias mv='mv -i'
 # git related aliases
 alias gag='git exec ag'
 alias gs='git st'
-alias gg='git grl'
+alias gg='git gral -n 15'
 
 # Update dotfiles
 dfu() {
