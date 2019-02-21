@@ -3,6 +3,7 @@
 	email = loertscher.b@outlook.com
 
 [alias]
+	alias = config --get-regexp ^alias\\.
 	st = status -sb
 	fp = fetch --prune
  	go = checkout
@@ -27,6 +28,9 @@
 
 [credential]
 	helper = cache --timeout=3600
+
+[core]
+	editor = emacs -nw
 
 # This goes last
 [include]
