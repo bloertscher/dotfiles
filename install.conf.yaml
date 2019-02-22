@@ -10,7 +10,9 @@
     ~/.zsh:
     ~/.zshrc:
     ~/.bash:
+    ~/.bash_logout:
     ~/.bashrc:
+    ~/.profile:
     ~/.gitconfig:
     ~/.gitignore_global:
     ~/.tmux.conf:
@@ -20,4 +22,4 @@
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
-  - [~/.dotfiles/bin/install-git-extras.sh, Installing git-extras]
+#  - [~/.dotfiles/bin/install-git-extras.sh, Installing git-extras]

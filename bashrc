@@ -1,9 +1,7 @@
-source ~/.shell/functions.sh
+[[ $- == *i* ]] || return 0
 
-# Allow local customizations in the ~/.shell_local_before file
-if [ -f ~/.shell_local_before ]; then
-    source ~/.shell_local_before
-fi
+# Source common things between bash and zsh
+source ~/.shell/common_before_rc.sh
 
 # Allow local customizations in the ~/.bashrc_local_before file
 if [ -f ~/.bashrc_local_before ]; then
@@ -13,25 +11,14 @@ fi
 # Settings
 source ~/.bash/settings.bash
 
-# Bootstrap
-source ~/.shell/bootstrap.sh
-
-# External settings
-source ~/.shell/external.sh
-
-# Aliases
-source ~/.shell/aliases.sh
-
 # Custom prompt
 source ~/.bash/prompt.bash
 
 # Plugins
 source ~/.bash/plugins.bash
 
-# Allow local customizations in the ~/.shell_local_after file
-if [ -f ~/.shell_local_after ]; then
-    source ~/.shell_local_after
-fi
+# Source common things between shells
+source ~/.shell/common_after_rc.sh
 
 # Allow local customizations in the ~/.bashrc_local_after file
 if [ -f ~/.bashrc_local_after ]; then
