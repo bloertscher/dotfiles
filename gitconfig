@@ -14,6 +14,7 @@
 	gra = log --graph --format=compact --all # graph all
 	gral = log --graph --format=line --all # graph all line
 	grad = log --graph --format=detail --all # graph all in detail
+	cam = commit -am
 
 [color]
 	ui = auto

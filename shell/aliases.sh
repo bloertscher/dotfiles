@@ -97,32 +97,6 @@ nonascii() {
     LC_ALL=C grep -n '[^[:print:][:space:]]' "${1}"
 }
 
-# Fetch pull request
-
-fpr() {
-    if ! git rev-parse --git-dir > /dev/null 2>&1; then
-        echo "error: fpr must be executed from within a git repository"
-        return 1
-    fi
-    (
-        cdgr
-        if [ "$#" -eq 2 ]; then
-            local repo="${PWD##*/}"
-            local user="${1}"
-            local branch="${2}"
-        elif [ "$#" -eq 3 ]; then
-            local repo="${1}"
-            local user="${2}"
-            local branch="${3}"
-        else
-            echo "Usage: fpr [repo] username branch"
-            return 1
-        fi
-
-        git fetch "git@github.com:${user}/${repo}" "${branch}:${user}/${branch}"
-    )
-}
-
 # Serve current directory
 
 serve() {
@@ -135,5 +109,4 @@ serve() {
 # Mirror stdout to stderr, useful for seeing data going through a pipe
 alias peek='tee >(cat 1>&2)'
 
-alias python='python3'
-alias pip='pip3'
+alias py3='python3'
