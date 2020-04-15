@@ -15,6 +15,7 @@
 	gral = log --graph --format=line --all # graph all line
 	grad = log --graph --format=detail --all # graph all in detail
 	cam = commit -am
+	d = diff
 
 [color]
 	ui = auto
