@@ -17,8 +17,6 @@
     ~/.gitignore_global:
     ~/.tmux.conf:
     ~/.tmux:
-    ~/.emacs:
-    ~/.emacs.d:
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
