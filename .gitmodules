@@ -19,15 +19,3 @@
 [submodule "shell/plugins/git-extras"]
 	path = shell/plugins/git-extras
 	url = https://github.com/tj/git-extras.git
-[submodule "emacs.d/plugins/emacs-color-theme-solarized"]
-	path = emacs.d/plugins/emacs-color-theme-solarized
-	url = https://github.com/sellout/emacs-color-theme-solarized.git
-[submodule "emacs.d/plugins/auto-compile"]
-	path = emacs.d/plugins/auto-compile
-	url = https://github.com/emacscollective/auto-compile.git
-[submodule "emacs.d/plugins/no-littering"]
-	path = emacs.d/plugins/no-littering
-	url = https://github.com/emacscollective/no-littering.git
-[submodule "emacs.d/plugins/packed"]
-	path = emacs.d/plugins/packed
-	url = https://github.com/emacscollective/packed.git

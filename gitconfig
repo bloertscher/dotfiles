@@ -32,7 +32,7 @@
 	helper = cache --timeout=3600
 
 [core]
-	editor = emacs -nw
+	editor = vim
 
 # This goes last
 [include]
