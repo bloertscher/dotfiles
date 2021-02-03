@@ -19,3 +19,9 @@
 [submodule "shell/plugins/git-extras"]
 	path = shell/plugins/git-extras
 	url = https://github.com/tj/git-extras.git
+[submodule "vim/pack/vendor/start/vim-sensible"]
+	path = vim/pack/vendor/start/vim-sensible
+	url = git@github.com:tpope/vim-sensible.git
+[submodule "vim/pack/vendor/start/vim-sleuth"]
+	path = vim/pack/vendor/start/vim-sleuth
+	url = git@github.com:tpope/vim-sleuth.git
