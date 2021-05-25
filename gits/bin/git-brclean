@@ -1,0 +1,17 @@
+#!/bin/bash
+# Deletes remote branches which have already been merged to "$1"
+# ("origin/master" by default)
+# TODO have a way to exclude branches
+git-brclean() {
+    branches="$(git branch -r --merged "${1-origin/master}" | grep -v "${1-master}")"
+    echo "This will delete the following branches:"
+    echo "$branches"
+    echo "Is this OK?"
+    read -rp "[Y/n]:" -n1 ans </dev/tty
+    echo ""
+    if [ "$ans" = "Y" ]; then
+        echo "$branches" | sed 's|origin\/||g' | xargs -r git push --delete origin
+    fi
+}
+
+git-brclean "$@"

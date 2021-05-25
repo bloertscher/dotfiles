@@ -1,22 +1,30 @@
 # Use colors in coreutils utilities output
-alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias grepc='grep --color=always'
 
 # ls aliases
+LS_OPTIONS="-F -C -h --color=auto"
+alias ls="ls $LS_OPTIONS"
 alias ll='ls -lAh'
 alias la='ls -A'
 alias lla='ls -lah'
 alias l='ls'
 
 # Aliases to protect against overwriting
+alias rm='rm -I'
 alias cp='cp -i'
 alias mv='mv -i'
 
 # git related aliases
 alias gag='git exec ag'
-alias gs='git st'
-alias gg='git gral -n 15'
+# alias gg='git gral -n 15'
+alias gs='git status -s'
+alias gb='git branch'
+alias gg='git g'
+alias ggg='git gg'
+alias gggg='git ggg'
+
+
 
 # Update dotfiles
 dfu() {
