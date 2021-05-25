@@ -6,20 +6,23 @@
 - clean: ['~']
 
 - link:
-    ~/.shell:
-    ~/.zsh:
-    ~/.zshrc:
+    ~/.ackrc:
     ~/.bash:
     ~/.bash_logout:
+    ~/.bash_profile:
     ~/.bashrc:
-    ~/.profile:
     ~/.gitconfig:
     ~/.gitignore_global:
+    ~/.gits:
+    ~/.profile:
+    ~/.shell:
+    ~/.shell_local_after:
     ~/.tmux.conf:
     ~/.tmux:
     ~/.vimrc:
     ~/.vim:
-    ~/.shell_local_after:
+    ~/.zsh:
+    ~/.zshrc:
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

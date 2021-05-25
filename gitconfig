@@ -2,6 +2,42 @@
 	name = bloertscher
 	email = loertscher.b@outlook.com
 
+[core]
+	editor = vim
+	pager = less -F -X
+	excludesfile = ~/.gitignore_global
+
+[push]
+	default = simple
+
+[color]
+	ui = auto
+
+[pretty]
+	line = "%C(auto)%h%d %s %C(yellow)by %C(blue)%an %C(green)%ar"
+	compact = "%C(auto)%h %s %C(green)%ar%n %C(auto)%d%n"
+	detail = "%C(auto)%h %s%n  %C(yellow)by %C(blue)%an %C(magenta)<%ae> [%G?] %C(green)%ar%n %C(auto)%d%n"
+
+[color "branch"]
+	current = magenta
+	local   = yellow
+	remote  = green
+
+[color "diff"]
+	meta = yellow
+	frag = magenta
+	old = red
+	new = green
+	commit = yellow
+
+[color "status"]
+	added     = green
+	changed   = yellow
+	untracked = cyan
+
+[credential]
+	helper = cache --timeout=3600
+
 [alias]
 	alias = config --get-regexp ^alias\\.
 	st = status -sb
@@ -14,25 +50,40 @@
 	gra = log --graph --format=compact --all # graph all
 	gral = log --graph --format=line --all # graph all line
 	grad = log --graph --format=detail --all # graph all in detail
+
+  # Display commit history in graphical foramt
+  # Usage: 'git graph'
+  #   Optionally supply the number of most recent commits to dispaly: 'git graph -<x>'
+  # graph = log --graph --abbrev-commit --all --date=short --pretty=format:'%C(bold blue)%h%C(reset)%C(yellow)%d%C(reset) %<(50,trunc)%s%C(green) (%ar) %C(blue)<%an>%C(reset)'
+  # Show just the history of the branch I'm on and origin/master, up to 20 commits
+  # g     = log --graph --abbrev-commit --pretty=format:'%C(bold blue)%h%C(reset)%C(yellow)%d%C(reset) %<(40,trunc)%s %C(blue)<%<(12,trunc)%an>%C(reset)' -20 HEAD origin/master
+  # Show the history of all known branches, up to 20 commits
+  # gg    = log --graph --abbrev-commit --all --pretty=format:'%C(bold blue)%h%C(reset)%C(yellow)%d%C(reset) %<(40,trunc)%s %C(blue)<%<(12,trunc)%an>%C(reset)' -20
+  # Show the history of all known branches, and use pager to see them all
+  # ggg    = log --graph --abbrev-commit --all --pretty=format:'%C(bold blue)%h%C(reset)%C(yellow)%d%C(reset) %<(60,trunc)%s%C(green) (%ar) %C(blue)<%an>%C(reset)'
+  # Just cuz
+  # lg    = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(cyan)%aD%C(reset) %C(green)(%ar) %C(blue)<%an>%C(reset)%C(yellow)%d%C(reset)%n'' %C(white)%s%C(reset) %C(dim white)%C(reset)' --all
 	cam = commit -am
+  # Ammend the previous commit (commits new changes, but keeps previous commit message).
+  # Usage: 'git ca'
+	ca    = commit --amend -C HEAD
+
+  # Checkout new branch
+  # Usage: 'git cb <new_branch>'
+	cb    = checkout -b
+	cr = clone --recursive
+	suri = submodule update --init --recursive
 	d = diff
+	da = diff --cached
+	dm = diff origin/master
+	dnoi = diff --no-index
+	ba = branch -a
+	pou = push origin -u
+  # See https://www.atlassian.com/blog/git/advanced-git-aliases
+  bclean = "!f() { git branch --merged ${1-master} | grep -v ${1-master} | xargs -r git branch -d; }; f"
 
-[color]
-	ui = auto
-
-[pretty]
-	line = "%C(auto)%h%d %s %C(yellow)by %C(blue)%an %C(green)%ar"
-	compact = "%C(auto)%h %s %C(green)%ar%n %C(auto)%d%n"
-	detail = "%C(auto)%h %s%n  %C(yellow)by %C(blue)%an %C(magenta)<%ae> [%G?] %C(green)%ar%n %C(auto)%d%n"
-
-[push]
-	default = current
-
-[credential]
-	helper = cache --timeout=3600
-
-[core]
-	editor = vim
+[branch]
+	autosetupmerge = always
 
 # This goes last
 [include]

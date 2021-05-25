@@ -1,0 +1,5 @@
+# Settings for 'ack'
+# Ignore build/ dirs by default
+--ignore-dir=build
+# Use less as pager, with colors
+--pager=less -RF

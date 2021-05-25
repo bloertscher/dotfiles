@@ -33,3 +33,9 @@
 Icon?
 ehthumbs.db
 Thumbs.db
+
+#python
+__pycache__/
+
+.clangd/
+.cache/
