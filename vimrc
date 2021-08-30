@@ -1,6 +1,6 @@
 "" General
 set nocompatible
-set number	" Show line numbers
+set nonumber	" Show line numbers
 set showmatch	" Highlight matching brace
 set visualbell	" Use visual bell (no beeping)
  

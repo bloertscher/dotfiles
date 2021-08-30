@@ -45,6 +45,8 @@
  	go = checkout
 	lg = log -p
 	gr = log --graph --format=compact # graph
+	gg = log --graph --format=compact # graph
+	g = log --graph --format=line # graph line
 	grl = log --graph --format=line # graph line
 	grd = log --graph --format=detail # graph detail
 	gra = log --graph --format=compact --all # graph all

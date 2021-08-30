@@ -2,6 +2,7 @@
     link:
       create: true
       relink: true
+      force: true
 
 - clean: ['~']
 
@@ -27,3 +28,4 @@
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
 #  - [~/.dotfiles/bin/install-git-extras.sh, Installing git-extras]
+  - [./tmux/plugins/tpm/bin/install_plugins, Installing tmux plugins]

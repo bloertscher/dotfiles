@@ -39,3 +39,4 @@ __pycache__/
 
 .clangd/
 .cache/
+node_modules/
