@@ -118,3 +118,4 @@ serve() {
 alias peek='tee >(cat 1>&2)'
 
 alias py3='python3'
+alias dc='docker-compose'
