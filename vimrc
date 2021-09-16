@@ -5,8 +5,10 @@ set showmatch	" Highlight matching brace
 set visualbell	" Use visual bell (no beeping)
  
 set hlsearch	" Highlight all search results
-set smartcase	" Enable smart-case search
+" Together, ignorecase + smartcase cause searches to be case-sensitive
+" if the pattern has a capital letter
 set ignorecase	" Always case-insensitive
+set smartcase	" Enable smart-case search
 set incsearch	" Searches for strings incrementally
  
 set undolevels=1000	" Number of undo levels

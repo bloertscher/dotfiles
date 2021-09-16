@@ -16,8 +16,6 @@ alias cp='cp -i'
 alias mv='mv -i'
 
 # git related aliases
-alias gag='git exec ag'
-# alias gg='git gral -n 15'
 alias gs='git status -s'
 alias gb='git branch'
 alias gg='git g'
@@ -59,17 +57,6 @@ jump() {
     cd "$(dirname ${1})"
 }
 
-# cd replacement for screen to track cwd (like tmux)
-scr_cd()
-{
-    builtin cd $1
-    screen -X chdir "$PWD"
-}
-
-if [[ -n $STY ]]; then
-    alias cd=scr_cd
-fi
-
 # Go up [n] directories
 up()
 {
@@ -110,9 +97,6 @@ nonascii() {
 serve() {
     ruby -run -e httpd . -p "${1:-8080}"
 }
-
-# Mirror a website
-# alias mirrorsite='wget -m -k -K -E -e robots=off'
 
 # Mirror stdout to stderr, useful for seeing data going through a pipe
 alias peek='tee >(cat 1>&2)'

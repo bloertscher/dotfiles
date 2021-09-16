@@ -43,6 +43,7 @@ man_prepend() {
     man_remove "$1"
     MANPATH="$1${MANPATH:+":$MANPATH"}"
 }
+
 newline_eof() {
     # Adds newline to the end of a file if it doesn't have one
     # Only use this on text files
