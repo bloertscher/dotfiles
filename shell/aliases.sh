@@ -1,6 +1,8 @@
 # Use colors in coreutils utilities output
 alias grep='grep --color=auto'
 alias grepc='grep --color=always'
+alias diff='diff --color=auto'
+alias diffc='diff --color=always'
 
 # ls aliases
 LS_OPTIONS="-F -C -h --color=auto"
@@ -9,6 +11,15 @@ alias ll='ls -lAh'
 alias la='ls -A'
 alias lla='ls -lah'
 alias l='ls'
+
+# less
+# -F: quit if one screen
+# -i: ignore case if no uppercase
+# -R: output raw control characters (enables color)
+LESS_OPTIONS="-F -i -R"
+alias less="less $LESS_OPTIONS"
+
+alias findhere="find . -mindepth 1 -maxdepth 1"
 
 # Aliases to protect against overwriting
 alias rm='rm -I'
@@ -22,7 +33,9 @@ alias gg='git g'
 alias ggg='git gg'
 alias gggg='git ggg'
 
-
+# Programs
+alias py3='python3'
+alias dc='docker-compose'
 
 # Update dotfiles
 dfu() {
@@ -101,5 +114,3 @@ serve() {
 # Mirror stdout to stderr, useful for seeing data going through a pipe
 alias peek='tee >(cat 1>&2)'
 
-alias py3='python3'
-alias dc='docker-compose'
