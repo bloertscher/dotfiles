@@ -24,3 +24,5 @@ shopt -s checkwinsize
 # then
 #   eval $(dircolors -b "${HOME}/.dotfiles/misc/dircolors.256dark")
 # fi
+
+EDITOR=vim
