@@ -13,6 +13,17 @@ set incsearch	" Searches for strings incrementally
  
 set undolevels=1000	" Number of undo levels
 
+" See vim-colors-solarized
+syntax enable
+set background=light
+
+" Have to do this to get the togglebg function loaded
+packadd! vim-colors-solarized
+colorscheme solarized
+" Set a key to toggle light/dark
+call togglebg#map("<F5>")
+
+
 "" tmux will only forward escape sequences to the terminal if surrounded by a DCS sequence
 "if exists('$TMUX')
 "   " set insert mode to a vertical line   

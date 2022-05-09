@@ -1,3 +1,4 @@
 *~
 tmux/plugins/*
 !tmux/plugins/tpm
+shell_local_after
