@@ -1,3 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
-
+# Use chruby to manage ruby versions
+. /usr/local/share/chruby/chruby.sh && chruby 2.7.5
