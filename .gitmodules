@@ -25,6 +25,12 @@
 [submodule "vim/pack/vendor/start/vim-sleuth"]
 	path = vim/pack/vendor/start/vim-sleuth
 	url = git@github.com:tpope/vim-sleuth.git
-[submodule "vim/pack/altercation/start/vim-colors-solarized"]
-	path = vim/pack/altercation/start/vim-colors-solarized
+[submodule "vim/pack/themes/opt/altercation-solarized"]
+	path = vim/pack/themes/opt/altercation-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "vim/pack/themes/opt/solarized8"]
+	path = vim/pack/themes/opt/solarized8
+	url = https://github.com/lifepillar/vim-solarized8.git
+[submodule "vim/pack/themes/opt/vim-selenized"]
+	path = vim/pack/themes/opt/vim-selenized
+	url = https://github.com/ianchanning/vim-selenized.git

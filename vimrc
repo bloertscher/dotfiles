@@ -13,16 +13,27 @@ set incsearch	" Searches for strings incrementally
  
 set undolevels=1000	" Number of undo levels
 
-" See vim-colors-solarized
+" Restore last position in a file
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" Enable syntax highlighting
 syntax enable
+
+" If this vim version has true color support, enable it
+if (has("termguicolors"))
+    " Workaround for getting tmux to work with colors
+    if (exists('$TMUX'))
+        let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
+        let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
+    endif
+    set termguicolors
+endif
+
+" Color scheme
+colorscheme selenized
 set background=light
-
-" Have to do this to get the togglebg function loaded
-packadd! vim-colors-solarized
-colorscheme solarized
 " Set a key to toggle light/dark
-call togglebg#map("<F5>")
-
+nnoremap <F6> :let &bg=(&bg=='light'?'dark':'light')<cr>
 
 "" tmux will only forward escape sequences to the terminal if surrounded by a DCS sequence
 "if exists('$TMUX')
